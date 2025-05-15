@@ -1,4 +1,3 @@
-
 def heartrate(hr: int)->str:
     if hr<60:
         return "LOW"

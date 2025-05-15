@@ -1,12 +1,15 @@
-import os
 import uvicorn
-from fastapi import FastAPI
-from dotenv import load_dotenv
+from fastapi import FastAPI, Request, Form
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
-from app.vital import temperature,blood_pressure,respiration_rate,heartrate
+from fastapi.staticfiles import StaticFiles
+from vital import temperature, blood_pressure, respiration_rate, heartrate
+from config import Config
 
-app=FastAPI()
-
+app = FastAPI()
+templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 class VitalSigns(BaseModel):
     heart_rate: int
     temperature_rate: float
@@ -14,20 +17,34 @@ class VitalSigns(BaseModel):
     diastolic_bp: int
     breathing_rate: int
 
-# vital=VitalSigns()
-
 @app.get("/")
-async def health_check_up():
-    return {"status": "ok"}
+async def health_check_up(request: Request):
+    return templates.TemplateResponse(request, "pro.html")
 
-@app.post("/check")
-async def checking(vital:VitalSigns):
-    return {
-        "Heart_Rate":heartrate(vital.heart_rate),
-        "Temperature":temperature(vital.temperature_rate),
-        "Blood_pressure":blood_pressure(vital.systolic_bp,vital.diastolic_bp),
-        "Respiration":respiration_rate(vital.breathing_rate)
+@app.post("/check", response_class=HTMLResponse)
+async def checking(
+    request: Request,
+    heart_rate: int = Form(...),
+    temperature_rate: float = Form(...),
+    systolic_bp: int = Form(...),
+    diastolic_bp: int = Form(...),
+    breathing_rate: int = Form(...)
+):
+    
+    vital = VitalSigns(
+        heart_rate=heart_rate,
+        temperature_rate=temperature_rate,
+        systolic_bp=systolic_bp,
+        diastolic_bp=diastolic_bp,
+        breathing_rate=breathing_rate
+    )
+    result = {
+        "Heart_Rate": heartrate(vital.heart_rate),
+        "Temperature": temperature(vital.temperature_rate),
+        "Blood_Pressure": blood_pressure(vital.systolic_bp, vital.diastolic_bp),
+        "Respiration": respiration_rate(vital.breathing_rate)
     }
+    return templates.TemplateResponse(request, "result.html", {"result": result})
 
-if __name__=="__main__":
-    uvicorn.run("app:app",port=9999,log_level="info")
+if __name__ == "__main__":
+    uvicorn.run("main:app", port=Config.PORT, log_level=Config.LOG_LEVEL)

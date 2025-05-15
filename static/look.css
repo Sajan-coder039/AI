@@ -1,0 +1,45 @@
+    h1{
+        color: rgb(9, 9, 66);
+        text-align: center;
+    }
+    body{
+        background-color:lightblue;
+    }
+    .measure{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color:green;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .inp{
+        color: black;
+        border: 0px;
+        }
+    button {
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #28a745;
+    color: rgb(233, 218, 86);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+h2{
+    color: rgb(43, 77, 11);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    border: #28a745 solid;
+
+}
+a{
+    color: blueviolet;
+    font-size: 25px;
+    align-items: right;
+
+}
+img{
+    border-radius: 300px;
+    margin-left: 360px;
+}
