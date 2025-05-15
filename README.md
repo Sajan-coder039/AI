@@ -42,30 +42,29 @@ uvicorn app.main:app --reload --port 9999
 ## 🧬 Project Structure
 health_checkup_project/
 ├── app/
-│   ├── __init__.py           # Marks app as a Python package
-│   ├── main.py               # FastAPI app: routes, request handling
-│   ├── vital.py              # Functions to evaluate vital signs
-│   └── config.py             # App configuration & environment settings
+│ ├── init.py # Marks app as a Python package
+│ ├── main.py # FastAPI app: routes, request handling
+│ ├── vital.py # Functions to evaluate vital signs
+│ └── config.py # App configuration & environment settings
 │
 ├── templates/
-│   ├── pro.html              # HTML form for user input
-│   └── results.html          # HTML page showing results
+│ ├── pro.html # HTML form for user input
+│ └── results.html # HTML page showing results
 │
 ├── static/
-│   └── look.css              # CSS styling for pages
+│ └── look.css # CSS styling for pages
 │
 ├── tests/
-│   ├── __init__.py           # Marks tests as a Python package
-│   └── test_app.py           # Unit/integration tests for FastAPI app
+│ ├── init.py # Marks tests as a Python package
+│ └── test_app.py # Unit/integration tests for FastAPI app
 │
-├── .env                      # Environment variables (e.g., secrets)
-├── requirements.txt          # Python dependencies list
-├── Dockerfile                # Docker image build instructions
-├── docker-compose.yml        # Docker Compose config for multi-container setups
-├── .pre-commit-config.yml    # Git pre-commit hooks config (linting, formatting)
-├── .gitignore                # Files/folders for Git to ignore
-└── README.md                 # Project overview & usage instructions
-
+├── .env # Environment variables (e.g., secrets)
+├── requirements.txt # Python dependencies list
+├── Dockerfile # Docker image build instructions
+├── docker-compose.yml # Docker Compose config for multi-container setups
+├── .pre-commit-config.yml # Git pre-commit hooks config (linting, formatting)
+├── .gitignore # Files/folders for Git to ignore
+└── README.md # Project overview & usage instructions
 
 ### 🔑 Environment Configuration
 Create a .env file with your environment variables, for example:
