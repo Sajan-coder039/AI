@@ -1,52 +1,45 @@
-📝 Text Summarizer App
-This is a web application built with FastAPI that uses Hugging Face Transformers to generate summaries from long pieces of text. The app includes everything you need for development and deployment: Docker support, CI/CD with GitHub Actions, automated testing using pytest, and code quality checks via pre-commit hooks.
+# 🩺 Health Checkup App
 
-🚀 Features
-Automatically summarizes lengthy text using the facebook/bart-large-cnn model.
+A web application built with FastAPI that assesses vital signs such as heart rate, temperature, blood pressure, and respiration rate. It provides real-time feedback based on user input and is designed for easy development and deployment with modern tools.
 
-FastAPI-based backend, with HTML templates rendered using Jinja2.
+---
 
-Clean and responsive front-end styled with CSS.
+## 🚀 Features
 
-Fully containerized using Docker for easy deployment.
+- User-friendly web interface for inputting vital signs (heart rate, temperature, blood pressure, respiration rate).
+- FastAPI backend with HTML templates rendered via Jinja2.
+- Clear, responsive UI styled with CSS.
+- Dockerized for consistent deployment environments.
+- Pre-configured testing setup with pytest.
+- Code quality checks enforced via pre-commit hooks.
+- Continuous Integration setup using GitHub Actions.
 
-CI pipeline integrated with GitHub Actions for continuous testing and linting.
+---
 
-Code quality enforced through pre-commit hooks.
+## 📦 Getting Started
 
-Unit tests written with pytest to ensure app functionality.
+### 🔧 Requirements
 
-📦 Getting Started
-🔧 Requirements
-Before you begin, make sure you have the following installed:
+- Docker and Docker Compose (for containerized runs)
+- Python 3.10+
+- pre-commit CLI (for code quality hooks)
 
-Docker and Docker Compose
+---
 
-Python 3.10 or higher
+### 🐳 Running the App with Docker
 
-pre-commit CLI tool
+Build and run the app with:
 
-🐳 Running the App with Docker
-To start the application using Docker Compose:
 
-bash
-Copy
-Edit
-docker-compose up --build
-Then, open your browser and go to: http://localhost:8000
 
-🧪 Running the App Locally (Without Docker)
-If you prefer to run it without Docker:
 
-bash
-Copy
-Edit
+
+### 🧪 Running Locally (Without Docker)
+Install dependencies and start the server:
 pip install -r requirements.txt
-uvicorn app.main:app --reload
-🧬 Project Structure
-bash
-Copy
-Edit
+uvicorn app.main:app --reload --port 9999
+
+### 🧬 Project Structure
 health_checkup_project/
 ├── app/
 │   ├── __init__.py           # Marks app as a Python package
@@ -73,28 +66,24 @@ health_checkup_project/
 ├── .gitignore                # Files/folders for Git to ignore
 └── README.md                 # Project overview & usage instructions
 
-🔑 Environment Configuration
-Your .env file should include:
 
-ini
+### 🔑 Environment Configuration
+Create a .env file with your environment variables, for example:
+
+env
 Copy
 Edit
-MODEL_NAME=facebook/bart-large-cnn
-🧪 Running Tests
-To execute the tests, simply run:
+# Add any environment variables here
+
+### 🧪 Running Tests
+Execute tests with:
 
 bash
 Copy
 Edit
 pytest
-Tests cover:
-
-Loading the homepage correctly
-
-Producing a summary when given a long input text
-
-✅ Using Pre-commit Hooks
-To ensure code quality, use pre-commit:
+### ✅ Code Quality with Pre-commit Hooks
+Install and run pre-commit hooks to maintain code quality:
 
 bash
 Copy
@@ -102,28 +91,22 @@ Edit
 pip install pre-commit
 pre-commit install
 pre-commit run --all-files
-These hooks include:
 
-Auto-formatting with Black
+### ⚙️ Continuous Integration with GitHub Actions
+CI is configured to:
 
-Linting with Flake8
+Set up Python environment
 
-Removing unnecessary whitespace
+Install dependencies
 
-⚙️ Continuous Integration with GitHub Actions
-The CI pipeline is defined in .github/workflows/ci.yml.
+Run tests with pytest
 
-It runs automatically when code is pushed or a pull request is opened on the main branch. It performs the following steps:
+Run pre-commit checks
 
-Sets up a Python environment
+Triggered on pushes and pull requests to the main branch.
 
-Installs dependencies
+### 🐳 Docker Overview
+Dockerfile: Builds the app container image using Python and FastAPI.
 
-Runs tests with pytest
+docker-compose.yml: Simplifies running containers and environment configuration.
 
-Executes pre-commit checks
-
-🐳 Docker Overview
-Dockerfile: Builds the app using Python and FastAPI.
-
-docker-compose.yml: Manages the container, reads the .env file, and simplifies running everything with one command.
