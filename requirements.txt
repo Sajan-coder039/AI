@@ -5,3 +5,4 @@ mkdocs
 python-dotenv
 pydantic
 uvicorn
+python-multipart

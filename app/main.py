@@ -4,8 +4,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
-from vital import temperature, blood_pressure, respiration_rate, heartrate
-from config import Config
+from .vital import temperature, blood_pressure, respiration_rate, heartrate
+from .config import Config
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
