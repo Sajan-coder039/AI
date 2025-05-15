@@ -39,7 +39,7 @@ Install dependencies and start the server:
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 9999
 
-### 🧬 Project Structure
+## 🧬 Project Structure
 health_checkup_project/
 ├── app/
 │   ├── __init__.py           # Marks app as a Python package
