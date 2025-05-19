@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 from .vital import temperature, blood_pressure, respiration_rate, heartrate
 from .config import Config
+from .logger import logger
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -16,9 +17,11 @@ class VitalSigns(BaseModel):
     systolic_bp: int
     diastolic_bp: int
     breathing_rate: int
+    logger.info("Class is built for app_running")
 
 @app.get("/")
 async def health_check_up(request: Request):
+    logger.info("Get requests going to run!!")
     return templates.TemplateResponse(request, "pro.html")
 
 @app.post("/check", response_class=HTMLResponse)
@@ -44,7 +47,9 @@ async def checking(
         "Blood_Pressure": blood_pressure(vital.systolic_bp, vital.diastolic_bp),
         "Respiration": respiration_rate(vital.breathing_rate)
     }
+    logger.info("post requests response successfully")
     return templates.TemplateResponse(request, "result.html", {"result": result})
 
 if __name__ == "__main__":
+    logger.info("uvicorn run successfully")
     uvicorn.run("main:app", port=Config.PORT, log_level=Config.LOG_LEVEL)
