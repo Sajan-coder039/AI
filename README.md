@@ -144,3 +144,6 @@ docker-compose.yml: Simplifies running containers and environment configuration.
 docker compose up        # Run all services
 docker compose down      # Stop and remove services
 ```
+
+### Logging Overview
+Logging : the process of recording events, errors, warnings, and debug messages while your application runs — helping you debug, monitor, and maintain the app effectively.
